@@ -4,16 +4,15 @@
         <title>출력결과</title>
     </head>
     <body>
+      <!-- 연필개수 -->
         <script>
-            function solution(a, b, c){
+            function solution(n){
                 let answer;
-                if(a<b) answer=a;
-                else answer=b;
-                if(c<answer) answer=c; 
+                answer=Math.ceil(n/12);
                 return answer;
             }
-
-            console.log(solution(1, 2, 3));
+// floor = 내림, ceil = 올림, round = 반올림
+            console.log(solution(178));
         </script>
     </body>
 </html>
