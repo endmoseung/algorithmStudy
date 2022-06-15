@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //점수구하기(연속으로 맞추면 1점씩 가산점줌)
+      function solution(arr) {
+        let answer = 0,
+          bonus = 0;
+        for (i = 0; i < arr.length; i++) {
+          if (arr[i] == 1) {
+            bonus++;
+            answer = answer + bonus;
+          } else if (arr[i] == 0) {
+            bonus = 0;
+          }
+        }
+        return answer;
+      }
+
+      let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = Number.MIN_SAFE_INTEGER;
+        let n = arr.length;
+        let sum1 = 0;
+        let sum2 = 0;
+        for (i = 0; i < n; i++) {
+          sum1 = 0;
+          sum2 = 0;
+          for (j = 0; j < n; j++) {
+            sum1 += arr[i][j]; // sum1 = arr[i].reduce((a, b) => a + b);
+            sum2 += arr[j][i];
+            if (sum1 > sum2) {
+              if (sum1 > answer) {
+                answer = sum1;
+              }
+            } else {
+              if (sum2 > answer) {
+                answer = sum2;
+              }
+            }
+          }
+        }
+        for (k = 0; k < n; k++) {
+          sum1 = arr[k][k];
+          sum2 = arr[k][5 - k];
+          let sums = sum1 + sum2;
+          if (answer < sums) {
+            answer = sums;
+          }
+        }
+        return answer;
+      }
+
+      let arr = [
+        [10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
