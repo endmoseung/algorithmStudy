@@ -5,6 +5,7 @@
   </head>
   <body>
     <script>
+      // 격자판 최대합
       function solution(arr) {
         let answer = Number.MIN_SAFE_INTEGER;
         let n = arr.length;
@@ -16,20 +17,21 @@
           for (j = 0; j < n; j++) {
             sum1 += arr[i][j]; // sum1 = arr[i].reduce((a, b) => a + b);
             sum2 += arr[j][i];
-            if (sum1 > sum2) {
-              if (sum1 > answer) {
-                answer = sum1;
-              }
-            } else {
-              if (sum2 > answer) {
-                answer = sum2;
-              }
-            }
+            // if (sum1 > sum2) {
+            //   if (sum1 > answer) {
+            //     answer = sum1;
+            //   }
+            // } else {
+            //   if (sum2 > answer) {
+            //     answer = sum2;
+            //   }
           }
+          answer = Math.max(answer, sum1, sum2); //위에 주석처리한것과 같음
         }
+
         for (k = 0; k < n; k++) {
           sum1 = arr[k][k];
-          sum2 = arr[k][5 - k];
+          sum2 = arr[k][n - k - 1];
           let sums = sum1 + sum2;
           if (answer < sums) {
             answer = sums;
