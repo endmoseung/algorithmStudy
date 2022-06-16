@@ -1,0 +1,43 @@
+<!-- <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //문자열중 숫자만 반환하는데 첫번쨰 자리가 0이면 0을 없애라
+      function solution(str) {
+        let answer = "";
+        let copied = str.replace(/[^0-9]/g, "");
+        if (copied[0] == 0) {
+          let filter = copied.substring(1);
+          answer = filter;
+        }
+        return answer;
+      }
+
+      let str = "g0en2T0s8eSoft";
+      console.log(solution(str));
+    </script>
+  </body>
+</html> -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let answer = "";
+        for (let x of str) {
+          if (!isNaN(x)) answer += x; //어떤값이 inNaN인지 판별한다. if(!isNaN(x)) answer=answer*10+Number(x);
+        }
+        return parseInt(answer); //정수화해주는것
+      }
+
+      let str = "g0en2T0s8eSoft";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

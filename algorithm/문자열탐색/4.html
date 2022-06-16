@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = [];
+        let len = s.length;
+        let p = 0;
+        for (i = 0; i < len; i++) {
+          if (s[i] !== t) {
+            p++;
+            answer.push(p);
+          } else {
+            p = 0;
+            answer.push(p);
+          }
+        }
+        p = 0;
+        for (i = len - 1; i >= 0; i--) {
+          if (s[i] !== t) {
+            p++;
+            if (answer[i] > p) {
+              answer.splice(i, 1, p);
+            }
+          } else {
+            p = 0;
+            if (answer[i] > p) {
+              answer.splice(i, 1, p);
+            }
+          }
+        }
+
+        return answer;
+      }
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>
