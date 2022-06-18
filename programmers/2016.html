@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 2016년 몇월 몇일이 무슨요일인지 계산
+      function solution(a, b) {
+        let date = new Date(2016, a - 1, b).toString(); //월은 0부터 시작해서 a-1해줘야한다 1월은 index[0]
+        let when = date.split(" ")[0].toUpperCase();
+        return when;
+      }
+      const a = 5;
+      const b = 24;
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>

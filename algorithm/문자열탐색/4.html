@@ -5,7 +5,9 @@
   </head>
   <body>
     <script>
+      //문자거리 : 주어진 t라는 문자와의 제일 가까운 거리를 출력해라
       function solution(s, t) {
+        // 앞에서 쭉돌려서 가까운거리를 일단 push한다음 뒤에서 쭉돌려서 앞에했던것보다 더 작은수가 있으면 그수로 리셋시켜주기
         let answer = [];
         let len = s.length;
         let p = 0;
