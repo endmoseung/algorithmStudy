@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //인형뽑아서 같은 인형이면 점수
+      function solution(board, moves) {
+        let basket = [];
+        let answer = 0;
+        let boardLen = board.length;
+        moves.forEach((move) => {
+          for (i = 0; i < boardLen; i++) {
+            const item = board[i][move - 1];
+            if (item !== 0) {
+              if (item !== basket[basket.length - 1]) {
+                basket.push(item);
+              } else {
+                basket.pop();
+                answer += 2;
+              }
+              board[i][move - 1] = 0;
+              break;
+            }
+          }
+        });
+        return answer;
+      }
+      const a = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 3],
+        [0, 2, 5, 0, 1],
+        [4, 2, 4, 4, 2],
+        [3, 5, 1, 3, 1],
+      ];
+      const b = [1, 5, 3, 5, 1, 2, 1, 4];
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>

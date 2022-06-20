@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //숫자를 뒤집어서 소수인지 판별
+      function isPrime(reverse) {
+        if (reverse === 1) {
+          return false;
+        }
+        for (let i = 2; i <= parseInt(Math.sqrt(reverse)); i++) {
+          //어떤수의 약수까지만 보면되므로 reverse의 제곱근까지만 보면된다
+          if (reverse % i === 0) {
+            return false;
+          }
+        }
+        return true;
+      }
+      function solution(arr) {
+        let answer = [];
+        for (let x of arr) {
+          let reverse = 0;
+          while (x) {
+            let t = x % 10;
+            reverse = reverse * 10 + t;
+            x = parseInt(x / 10);
+          }
+          console.log(reverse);
+          if (isPrime(reverse)) {
+            answer.push(reverse);
+          }
+        }
+        return answer;
+      }
+
+      let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function isPrime(num){
+                if(num===1) return false;
+                for(let i=2; i<=parseInt(Math.sqrt(num)); i++){
+                    if(num%i===0) return false;
+                }
+                return true;
+            }
+            function solution(arr){
+                let answer=[];
+                for(let x of arr){
+                    let res=Number(x.toString().split('').reverse().join(''));
+                    if(isPrime(res)) answer.push(res);
+                }
+                return answer;
+            }
+            
+            let arr=[32, 55, 62, 20, 250, 370, 200, 30, 100];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html> -->
