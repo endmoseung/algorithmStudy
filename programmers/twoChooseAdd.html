@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(numbers) {
+        let answer = [];
+        let added = 0;
+        const numLen = numbers.length;
+        for (i = 0; i < numLen - 1; i++) {
+          for (j = i + 1; j < numLen; j++) {
+            added = numbers[i] + numbers[j];
+            if (answer.includes(added) === false) {
+              answer.push(added);
+            }
+          }
+        }
+
+        return answer.sort((a, b) => a - b);
+      }
+    </script>
+  </body>
+</html>
