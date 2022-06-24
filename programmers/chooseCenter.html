@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //문자열중 가운데에있는 숫자를 리턴 만약에 짝수면 중간에 2개
+      function solution(s) {
+        let answer = "";
+        if (s.length % 2 === 1) {
+          let center = s[Math.floor(s.length / 2)];
+          answer += center;
+        } else if (s.length % 2 === 0) {
+          answer =
+            answer +
+            s[Math.floor(s.length / 2) - 1] +
+            s[Math.floor(s.length / 2)];
+        }
+        return answer;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let count = 0;
+      function solution(dartResult) {
+        var answer = 0;
+        dartResult += 1;
+        const dartLen = dartResult.length;
+        for (i = 0; i < dartLen; i++) {
+          if (isNaN(dartResult[i]) === false) {
+            for (j = i + 1; j < dartLen; j++) {
+              console.log(typeof j);
+              if (isNaN(dartResult[j]) === false) {
+                let sliced = dartResult.slice(i, j);
+                score(sliced);
+                break;
+              }
+            }
+          }
+        }
+        answer = count;
+        return answer;
+      }
+
+      function score(sliced) {
+        let num = 0;
+        for (let i of sliced) {
+          if (isNaN(i) === false) {
+            num += Number(i);
+          } else if (isNaN(i) === true) {
+            console.log(i);
+            if (i === "D") {
+              num = num ** 2;
+            } else if (i === "T") {
+              num = num ** 3;
+            } else if (i === "*") {
+              num = num * 2;
+              count = count * 2;
+            } else if (i === "#") {
+              num = -num;
+            }
+          }
+        }
+
+        count += num;
+      }
+      console.log(solution("1S2D*3T"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //배열에서 연속되는 index중 중복되는값은 제거
+      function solution(arr) {
+        console.log(arr);
+        arr.push("시험");
+        console.log(arr);
+        let answer = [];
+        for (i = 1; i < arr.length - 1; i++) {
+          if (s[i] !== s[i + 1]) {
+            answer.push(s[i]);
+          }
+        }
+
+        return answer;
+      }
+      console.log(solution([1, 1, 3, 3, 0, 1, 1]), solution([4, 4, 4, 3, 3]));
+    </script>
+  </body>
+</html>
