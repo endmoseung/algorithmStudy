@@ -8,15 +8,43 @@
   </head>
   <body>
     <script>
-      function gcdlcm3(a, b) {
-        var r;
-
-        for (var ab = a * b; (r = a % b); a = b, b = r) {
-          console.log(a, b, r);
-          return [b, ab / b];
+      function solution(s) {
+        let answer = "";
+        s = s.split("");
+        if (isNaN(s[0])) {
+          s[0] = s[0].toUpperCase();
         }
+        for (i = 1; i < s.length; i++) {
+          if (s[i - 1] === " ") {
+            s[i] = s[i].toUpperCase();
+          } else {
+            s[i] = s[i].toLowerCase();
+          }
+        }
+        return s.join("");
       }
-      console.log(gcdlcm3(1, 5));
+      let a = "adadad";
+      a[0] = a[0].toUpperCase();
+      console.log(a);
+      console.log(solution("3people unFollowed me"));
+      console.log(solution("for the last week"));
+      console.log(solution("3people  unFollowed  me"));
+      // function solution(s) {
+      //   let answer = "";
+      //   s = s.split("");
+      //   if (isNaN(s[0])) {
+      //     s[0] = s[0].toUpperCase();
+      //   }
+      //   for (i = 1; i < s.length; i++) {
+      //     if (s[i - 1] === " ") {
+      //       s[i] = s[i].toUpperCase();
+      //     } else if (s[i - 1] !== " ") {
+      //       s[i] = s[i].toLowerCase();
+      //     }
+      //   }
+      //   s = s.join("");
+      //   return s;
+      // }
     </script>
   </body>
 </html>
