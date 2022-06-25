@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //배열안에 수들로 만든 가짓수에서 가장큰 숫자를 리턴
+      //string안에 number를 추가해주면 number가 스트링으로 변환되서 추가된다.string안에 number가 있는 상태에서 오름차순 sort해도 값이 정렬되서 나온다
+
+      function solution(numbers) {
+        let answer = numbers
+          .map((num) => String(num)) //string으로 변환해줘야 sort해서 두수합을 비교할 수 있음
+          .sort((a, b) => b + a - (a + b)) //내림차순 해주기위해 거꾸로 적었고 b+a, a+b로 해준건 2개의 문자씩 비교하면서 더큰값으로 정렬하기 위함
+          .join("");
+        return answer[0] === "0" ? "0" : answer; //모두다 0인 배열이여서 "0000"같은값을 보내준다면 그 값을 "0"으로 만들어주기 위함
+      }
+    </script>
+  </body>
+</html>

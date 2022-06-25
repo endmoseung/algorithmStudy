@@ -8,6 +8,7 @@
   </head>
   <body>
     <script>
+      //맨앞 문자가 소문자면 대문자로 해주고 이외의 문자가 대문자면 소문자로 바꿔주기
       function solution(s) {
         s = s.split("");
         if (isNaN(s[0])) s[0] = s[0].toUpperCase();
