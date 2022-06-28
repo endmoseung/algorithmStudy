@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //졸업선물 어떤걸 할인받았을떄 가격이 제일 싼지 모르기떄문에 모든걸 탐색한다 >>> 이말이 곧 완전탐색
+      function solution(m, product) {
+        let answer = 0;
+        let n = product.length;
+        product.sort((a, b) => a[0] + a[1] - (b[0] + b[1])); //product 가격과 배송비의 가격의 합순으로 sort한것
+        for (i = 0; i < n; i++) {
+          let money = m - (product[i][0] / 2 + product[i][1]); // i번쨰 index의 상품값을 반값한다음 총 money에서 뺀 값
+          let cnt = 1;
+          for (j = 0; j < n; j++) {
+            if (j !== i && money - (product[j][0] + product[j][1]) < 0) break; // 총 money가 사야할 물건과 배송의합보다 작을경우 더이상 for문 돌 필요없기 떄문에 break
+            if (j !== i && money - (product[j][0] + product[j][1]) >= 0) {
+              money -= product[j][0] + product[j][1];
+              cnt++; // 살수 있는 제품이 있다면 cnt++해줘서 총 몇개살수 있는지 count하기
+            }
+          }
+          if (cnt > answer) {
+            answer = cnt; // 만약 i돌아서 cnt가 answer보다 크다면 그경우가 최선이기 떄문에 그걸로 바꿔주기
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [
+        [6, 6],
+        [2, 2],
+        [4, 3],
+        [4, 5],
+        [10, 3],
+      ];
+      console.log(solution(28, arr));
+    </script>
+  </body>
+</html>

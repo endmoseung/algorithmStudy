@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //회문문자열 거꾸로해도 같은 문자
+      function solution(s) {
+        let answer = "YES";
+        s = s.toLowerCase();
+        let len = s.length;
+        for (i = 0; i < Math.floor(len / 2); i++) {
+          if (s[i] !== s[len - i - 1]) {
+            answer = "NO";
+          }
+        }
+
+        return answer;
+      }
+
+      let str = "goooG";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+
+<!-- 
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer="YES";
+                s=s.toLowerCase();
+                if(s.split('').reverse().join('')!=s) return "NO";     //split("")따옴표를 넣으면 단어하나하나당 배열로 분해하고 default로 넣으면 그냥 배열에 넣고 안에 스페이스바 넣어주면 단어별로 끊음 원하는 단어로 끊기가능
+                return answer;// reverse()배열을 역순으로 해줌, join(a) 배열들을 a로 붙여서 합쳐줌
+            }
+            
+            let str="gooG";
+            console.log(solution(str));
+        </script>
+    </body>
+</html> -->

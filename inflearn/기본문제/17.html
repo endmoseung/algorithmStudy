@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //중복되는 문자 제거
+      function solution(s) {
+        let answer = "";
+        for (i = 0; i < s.length; i++) {
+          //indexOf : string.indexOf(a,b) string에서 a라는 값을 제일 먼저 발견한것을 리턴한다, b에 number를 넣으면 b번쨰 숫자부터 찾는다.
+          if (s.indexOf(s[i]) === i) {
+            answer += s[i];
+          }
+        }
+        return answer;
+      }
+      console.log(solution("ksekkset"));
+    </script>
+  </body>
+</html>

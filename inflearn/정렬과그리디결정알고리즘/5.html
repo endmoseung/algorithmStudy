@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //카카오 캐시변경 삽입정렬 이용한것 번호를 오른쪽으로 한칸씩 옮기기위해 삽입정렬을 사용함 여깄는건 내가만든것
+      function solution(size, arr) {
+        let answer = [0, 0, 0, 0, 0];
+        for (i = 0; i < arr.length; i++) {
+          if (arr.indexOf(arr[i]) === i) {
+            //miss된경우
+            for (j = size - 2; j >= 0; j--) {
+              answer[j + 1] = answer[j];
+            }
+            answer[0] = arr[i];
+            console.log("adad");
+          } else {
+            //hit된 경우
+            for (k = answer.indexOf(arr[i]) - 1; k >= 0; k--) {
+              answer[k + 1] = answer[k];
+            }
+            answer[0] = arr[i];
+          }
+        }
+        return answer;
+      }
+
+      let arr = [1, 2, 3, 2, 6, 2, 3, 5, 7, 2];
+      let ab = arr.indexOf(2);
+      console.log(solution(5, arr));
+    </script>
+  </body>
+</html>
+<!-- 
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(size, arr) {
+        let answer = [];
+        arr.forEach((x) => {
+          let pos = -1;
+          for (let i = 0; i < size; i++) if (x === answer[i]) pos = i;
+          if (pos === -1) {
+            answer.unshift(x);
+            if (answer.length > size) answer.pop();
+          } else {
+            answer.splice(pos, 1);
+            answer.unshift(x);
+          }
+        });
+
+        return answer;
+      }
+
+      let arr = [1, 2, 3, 2, 6, 2, 3, 5, 7];
+      console.log(solution(5, arr));
+    </script>
+  </body>
+</html> -->

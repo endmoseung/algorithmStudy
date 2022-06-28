@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //재귀함수와 스택프레임(알아보기)
+      function solution(n) {
+        function DFS(L) {
+          if (L == 0)
+            return; //일반적으로 return은 값을 반환하는 의미도 잇지만 뒤에 아무것도 안적으면 함수를 끝내는 의미도 있다.
+          else {
+            DFS(L - 1); //여기서 15번줄을 끝내지 않았기 때문에 임시저장 해놓다가 나중에 함수가 끝났을떄 복귀주소로 간다. 이떄 스택은 LIFO개념이므로 위에 쌓인 L=1부터 작동하기떄문에 console에 1부터 찍혀서 3이 찍힘으로써 끝난다
+            console.log(L);
+          }
+        }
+        DFS(n);
+      }
+
+      solution(3);
+    </script>
+  </body>
+</html>

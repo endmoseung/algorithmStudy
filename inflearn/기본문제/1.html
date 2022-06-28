@@ -1,0 +1,20 @@
+<html> 
+  <!-- 세가지 숫자중 가장작은값 띄우기 -->
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(a, b, c){
+                let answer;
+                if(a<b) answer=a;
+                else answer=b;
+                if(c<answer) answer=c; 
+                return answer;
+            }
+
+            console.log(solution(1, 2, 3));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //A를 #으로 바꿔라
+      function solve(string) {
+        let answer = string;
+        answer = answer.replace("A", "#"); // replace(a,b) a에서는 원하고자하는 문자 혹은 문자열을 설정하고 /A/뒤에 g라는 값은 전역적으로 하라는뜻인데 이를 설정 안하면 만나는 처음값만 수정한다, b에서는 선택한 그 문자열을 b로 바꿔준다.
+        return answer;
+      }
+
+      let banana = "BANANA";
+      console.log(solve(banana));
+    </script>
+  </body>
+</html>
+<!-- 아래와 같이 for(lex x of s ) 로 하나씩 돌면서 그 값을 새로운 변수에 넣어주는 방식으로도 가능하다-->
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer="";
+                for(let x of s){
+                    if(x=='A') answer+='#';
+                    else answer+=x;
+                }
+                return answer;
+            }
+            
+            let str="BANANA";
+            console.log(solution(str));
+        </script>
+    </body>
+</html> -->

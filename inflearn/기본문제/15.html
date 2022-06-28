@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //주어진 문자중 가장 길이가 긴것을 출력하라
+      function solution(s) {
+        let answer = "",
+          max = Number.MIN_SAFE_INTEGER;
+        console.log(max);
+        for (let x of s) {
+          if (x.length > max) {
+            max = x.length;
+            answer = x; // 제일 긴 문자가 max로 배정된후 그 x값을 answer에 넣어준후 마지막에 리턴한다.
+          }
+        }
+        return answer;
+      }
+      let str = ["teacher", "time", "student", "beautiful", "good"];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

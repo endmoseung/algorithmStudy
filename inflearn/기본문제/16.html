@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //문자열 가운데에 있는 글자 출력 단 문자열이 짝수라면 중간에 두가지 문자를 출력
+      function solution(s) {
+        let answer;
+        let mid = Math.floor(s.length / 2);
+        if (s.length % 2 === 1) {
+          answer = s.substring(mid, mid + 1); // substring : string.substring(a,b) string의 a번 index부터 b번 index앞까지의 문자를 리턴 ,string.substr(a,b) : string의 a번 index부터 b개만큼 뽑아내라
+        } else if (s.length % 2 === 0) {
+          answer = s.substring(mid - 1, mid + 1);
+        }
+        return answer;
+      }
+      console.log(solution("studys"));
+      console.log(solution("study"));
+      console.log(solution("moseung"));
+      console.log(solution("moseungs"));
+    </script>
+  </body>
+</html>
