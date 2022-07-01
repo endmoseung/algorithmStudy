@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = false;
+        s = s.split("");
+        const sLen = s.length;
+        if (sLen === 4 || sLen === 6) {
+          //문제에 문자열이 4이거나 6이거나일떄 두가지 경우가 있어서 이걸 넣어줌
+          for (i = 0; i < sLen; i++) {
+            if (isNaN(s[i])) {
+              answer = false;
+              break; //하나라도 숫자아닌게 있으면 false하고 break해버린다.
+            } else {
+              answer = true;
+            }
+          }
+        }
+        return answer;
+      }
+    </script>
+  </body>
+</html>

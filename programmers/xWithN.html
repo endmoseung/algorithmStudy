@@ -8,9 +8,15 @@
   </head>
   <body>
     <script>
-      let a = "-1234";
-      a = Number(a);
-      console.log(a);
+      function solution(x, n) {
+        var answer = [];
+        let number = 0;
+        for (i = 0; i < n; i++) {
+          number += x;
+          answer.push(number);
+        }
+        return answer;
+      }
     </script>
   </body>
 </html>
