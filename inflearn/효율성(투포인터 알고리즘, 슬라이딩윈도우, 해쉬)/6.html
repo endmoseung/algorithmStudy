@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //학급회장 뽑기 자바스크립트에 내장된 Map객체를 사용해서 푼다. set과 get은 우리가 local에서 가져오는것처럼 has는 includes처럼 사용
+      function solution(s) {
+        let answer;
+        let sH = new Map();
+        for (let x of s) {
+          if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+          else sH.set(x, 1);
+        }
+        let max = 0;
+        for (let [key, value] of sH) {
+          if (value > max) {
+            max = value;
+            answer = key;
+          }
+        }
+        return answer;
+      }
+      // for (let x of s) {
+      //     if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+      //     else sH.set(x, 1);
+      //   }
+      //   let max = Number.MIN_SAFE_INTEGER;
+      //   for (let [key, val] of sH) {
+      //     if (val > max) {
+      //       max = val;
+      //       answer = key;
+      //     }
+      //   }
+
+      let str = "BACBACCACCBDEDE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
