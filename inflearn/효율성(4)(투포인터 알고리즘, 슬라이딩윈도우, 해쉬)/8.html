@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //주어진 스트링에서 아나그램인 경우의수를 모두 찾기(투포인터,슬라이딩윈도우,해시)
+      //내풀이
+      function compareMaps(sH, tH) {
+        const t = new Map([...tH]);
+        const s = new Map([...sH]);
+        for (let [key, value] of s) {
+          if (!t.has(key) || t.get(key) === 0) {
+            return false;
+          } else {
+            t.set(key, t.get(key) - 1);
+          }
+        }
+        return true;
+      }
+
+      function solution(s, t) {
+        let answer = 0;
+        let sH = new Map();
+        let tH = new Map();
+        for (let x of t) {
+          if (tH.has(x)) tH.set(x, tH.get(x) + 1);
+          else tH.set(x, 1);
+        }
+        for (let i = 0; i < b.length; i++) {
+          if (sH.has(s[i])) sH.set(s[i], sH.get(s[i]) + 1);
+          else sH.set(s[i], 1);
+        }
+        if (compareMaps(sH, tH)) answer++;
+        let lt = 0;
+        let rt = t.length;
+        for (let i = lt; i < s.length - t.length; i++) {
+          if (sH.has(s[rt])) sH.set(s[rt], sH.get(s[rt]) + 1);
+          else sH.set(s[rt], 1);
+          if (sH.get(s[lt]) < 2) sH.delete(s[lt]);
+          else sH.set(s[lt], sH.get(s[lt]) - 1);
+          if (sH.size === tH.size) {
+            if (compareMaps(sH, tH)) answer++;
+          }
+          lt++;
+          rt++;
+        }
+        return answer;
+      }
+      //인프런풀이
+      function compareMaps(map1, map2) {
+        if (map1.size !== map2.size) return false;
+        for (let [key, val] of map1) {
+          if (!map2.has(key) || map2.get(key) !== val) return false;
+        }
+        return true;
+      }
+      function solution(s, t) {
+        let answer = 0;
+        let tH = new Map();
+        let sH = new Map();
+        for (let x of t) {
+          if (tH.has(x)) tH.set(x, tH.get(x) + 1);
+          else tH.set(x, 1);
+        }
+        let len = t.length - 1;
+        for (let i = 0; i < len; i++) {
+          if (sH.has(s[i])) sH.set(s[i], sH.get(s[i]) + 1);
+          else sH.set(s[i], 1);
+        }
+        let lt = 0;
+        for (let rt = len; rt < s.length; rt++) {
+          if (sH.has(s[rt])) sH.set(s[rt], sH.get(s[rt]) + 1);
+          else sH.set(s[rt], 1);
+          if (compareMaps(sH, tH)) answer++;
+          sH.set(s[lt], sH.get(s[lt]) - 1);
+          if (sH.get(s[lt]) === 0) sH.delete(s[lt]);
+          lt++;
+        }
+        return answer;
+      }
+
+      let a = "bacaAacba";
+      let b = "abc";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>

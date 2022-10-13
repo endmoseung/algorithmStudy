@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //올바른 괄호이면 YES아니면 NO를 출력해라 즉 괄호 열기닫기의 갯수가 같으면
+      function mySolution(s) {
+        let stack = [];
+        console.log(s.length);
+        for (let x of s) {
+          if (x === "(") stack.push(x);
+          else stack.pop();
+        }
+        return stack.length > 0 ? "NO" : "YES";
+      }
+
+      function solution(s) {
+        let answer = "YES";
+        stack = [];
+        for (let x of s) {
+          if (x === "(") stack.push(x);
+          else {
+            if (stack.length === 0) return "NO";
+            stack.pop();
+          }
+        }
+        if (stack.length > 0) return "NO";
+        return answer;
+      }
+
+      let a = "(()(()))(()";
+      console.log(mySolution(a));
+    </script>
+  </body>
+</html>

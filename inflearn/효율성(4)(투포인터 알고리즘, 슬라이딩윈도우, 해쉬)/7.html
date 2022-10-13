@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //문자열의 총 key의 수들이 일치하지만 배열만 서로 다른값을 아나그램이라고 하는데 아나그램인지를 판별하라
+      function solution(a, b) {
+        //내가 푼것
+        let answer;
+        let aH = new Map();
+        for (let x of a) {
+          if (aH.has(x)) aH.set(x, aH.get(x) + 1);
+          else aH.set(x, 1);
+        }
+        for (let x of b) {
+          if (aH.has(x)) aH.set(x, aH.get(x) - 1);
+          else return "NO";
+          if (!ah.has(x) || ah.get(x) === 0) return "NO";
+          else aH.set(x, aH.get(x) - 1);
+        }
+
+        for (let [key, value] of aH) {
+          if (value === 0) {
+            answer = "YES";
+          } else {
+            return "NO";
+          }
+        }
+        return answer;
+      }
+
+      function solution2(a, b) {
+        if (a.length !== b.length) return "NO";
+        let aH = new Map();
+        for (let x of a) {
+          if (aH.has(x)) aH.set(x, aH.get(x) + 1);
+          else aH.set(x, 1);
+        }
+        for (let x of b) {
+          if (!aH.has(x) || aH.get(x) === 0) return "NO";
+          else aH.set(x, aH.get(x) - 1);
+        }
+
+        return "YES";
+      }
+
+      const a = "AbaAeCe";
+      const b = "baeeACA";
+      console.log(solution2(a, b));
+    </script>
+  </body>
+</html>
+\

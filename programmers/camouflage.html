@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(clothes) {
+        let answer = 1;
+        let sH = new Map();
+        for (let x of clothes) {
+          if (sH.has(x[1])) sH.set(x[1], sH.get(x[1]) + 1);
+          else sH.set(x[1], 1);
+        }
+        for (let [key, value] of sH) {
+          answer = answer * (value + 1);
+        }
+
+        return answer - 1;
+      }
+    </script>
+  </body>
+</html>
