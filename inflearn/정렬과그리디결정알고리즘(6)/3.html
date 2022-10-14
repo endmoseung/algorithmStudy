@@ -8,7 +8,7 @@
       //버블정렬 양옆을 비교하며 제일 큰숫자가 제일뒤로 정렬되는 방식
       function solution(arr) {
         let answer = arr;
-        for (i = 0; i < arr.length; i++) {
+        for (i = 0; i < arr.length - 1; i++) {
           for (j = 0; j < arr.length - 1 - i; j++) {
             if (arr[j] > 0 && arr[j] > arr[j + 1]) {
               [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];

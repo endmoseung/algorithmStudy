@@ -14,12 +14,17 @@
             if (arr[idx] > arr[j]) idx = j;
           }
           [arr[idx], arr[i]] = [arr[i], arr[idx]];
+          console.log(answer);
         }
         return answer;
       }
 
       let arr = [13, 5, 11, 7, 23, 15];
       console.log(solution(arr));
+
+      let agag = [1, 2, 3, 4, 5];
+      const [a, b] = agag;
+      console.log(a, b);
     </script>
   </body>
 </html>

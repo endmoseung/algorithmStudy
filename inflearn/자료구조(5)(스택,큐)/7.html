@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //수업 계획짜기
+      //내가푼것
+      function solution(need, plan) {
+        let queue = [];
+        for (let x of need) {
+          queue.push(x);
+        }
+        for (i = 0; i < plan.length; i++) {
+          if (plan[i] === queue[0]) queue.shift();
+        }
+        return queue.length === 0 ? "YES" : "NO";
+      }
+
+      function solution2(need, plan) {
+        let answer = "YES";
+        let queue = need.split("");
+        for (let x of plan) {
+          if (queue.includes(x)) {
+            if (x !== queue.shift()) return "NO";
+          }
+        }
+        if (queue.length > 0) return "NO";
+        return answer;
+      }
+
+      let a = "CBA";
+      let b = "CBDAGE";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>

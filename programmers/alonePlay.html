@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(cards) {
+        let answer = 0;
+        for (let i = 0; i < cards.length; i++) {
+          let first = 0;
+          let second = 0;
+          let done = [];
+          let next = cards[i] - 1;
+          done.push(i);
+          first = 1;
+          while (!done.includes(next)) {
+            done.push(next);
+            next = cards[next] - 1;
+            first++;
+          }
+          for (let j = i + 1; j < cards.length; j++) {
+            if (!done.includes(j)) {
+              let next = cards[j] - 1;
+              done.push(j);
+              second = 1;
+              while (!done.includes(next)) {
+                done.push(next);
+                next = cards[next] - 1;
+                second++;
+              }
+            }
+          }
+          const max = first * second;
+          if (max > answer) answer = max;
+        }
+
+        return answer;
+      }
+      const cards = [8, 6, 3, 7, 2, 5, 1, 4];
+      console.log(solution(cards));
+    </script>
+  </body>
+</html>

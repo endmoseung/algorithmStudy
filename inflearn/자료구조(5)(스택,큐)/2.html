@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //괄호안에 있는 문자제거후 남은 문자만 출력
+      //내풀이
+      function mySolution(s) {
+        let stack = [];
+        for (let x of s) {
+          if (x !== ")") stack.push(x);
+          else {
+            while (stack[stack.length - 1] !== "(") {
+              stack.pop();
+            }
+            stack.pop();
+          }
+        }
+        return stack.join("");
+      }
+
+      function solution(s) {
+        let answer;
+        let stack = [];
+        for (let x of s) {
+          if (x === ")") {
+            while (stack.pop() !== "("); //stack에서 pop을 한번하고 (인지 아닌지 판단해서 (였다면 while문 종료
+          } else stack.push(x);
+        }
+        answer = stack.join("");
+        return answer;
+      }
+
+      let str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+      console.log(mySolution(str));
+      let a = [2];
+      let b = a.pop();
+      console.log(a, b);
+    </script>
+  </body>
+</html>

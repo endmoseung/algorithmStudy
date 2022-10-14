@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // function solution(n, k) {
+      //   let copyN = n;
+      //   let prince = [];
+      //   let count = 0;
+      //   for (i = 1; i < n + 1; i++) {
+      //     if (i % n !== 0) {
+      //       prince.push(i);
+      //       copyN--;
+      //     }
+      //     count++;
+      //     if (count === k) count = 0;
+      //   }
+      //   let currentN = 0;
+      //   while (copyN !== 1) {
+      //     count++;
+      //     currentN++;
+      //     if (currentN === copyN) currentN = 0;
+      //     if (count === k) {
+      //       prince.splice(currentN - 1, 1);
+      //       copyN--;
+      //       count = 0;
+      //     }
+      //   }
+      //   console.log(prince);
+      //   return prince[0];
+      // }
+
+      function solution(n, k) {
+        let prince = [];
+        for (i = 1; i < n + 1; i++) {
+          prince.push(i);
+        }
+        while (prince.length !== 1) {
+          let count = 0;
+          while (count !== 3) {
+            count++;
+            if (count !== 3) prince.push(prince.shift());
+            else prince.shift();
+          }
+        }
+        return prince[0];
+      }
+
+      console.log(solution(8, 3));
+
+      function solution2(n, k) {
+        let answer;
+        let queue = Array.from({ length: n }, (v, i) => i + 1);
+        while (queue.length) {
+          for (let i = 1; i < k; i++) queue.push(queue.shift());
+          queue.shift();
+          if (queue.length === 1) answer = queue.shift();
+        }
+        return answer;
+      }
+    </script>
+  </body>
+</html>

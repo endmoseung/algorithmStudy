@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(priorities, location) {
+        let answer = 0;
+        let grade = [...priorities];
+        let queue = [];
+        for (let i = 0; i < priorities.length; i++) {
+          queue.push(i);
+        }
+        while (queue.includes(location)) {
+          let firstG = grade.shift();
+          let firstQ = queue.shift();
+          console.log(grade, answer);
+          let max = 0;
+          for (i = 0; i < grade.length; i++) {
+            if (max < grade[i]) max = grade[i];
+            if (firstG <= grade[i]) {
+              grade.push(firstG);
+              queue.push(firstQ);
+              break;
+            }
+          }
+          if (firstG >= max) {
+            answer++;
+            if (firstQ === location) return answer;
+          }
+        }
+        return answer;
+      }
+
+      let a = [1, 1, 9, 1, 1, 1];
+      let b = 0;
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
