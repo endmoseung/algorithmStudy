@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //마구간 찾기 주어진 말들간의 거리를 최소한으로 할 수 있는 경우의 수를 구하라
+      //이분법으로 찾긴데 여기서 lt값은 무조건 1로 두는게 좋다.
+      function count(stable, dist) {
+        let cnt = 1,
+          ep = stable[0];
+        for (let i = 1; i < stable.length; i++) {
+          if (stable[i] - ep >= dist) {
+            cnt++;
+            ep = stable[i];
+          }
+        }
+        return cnt;
+      }
+      function solution(c, stable) {
+        let answer;
+        stable.sort((a, b) => a - b);
+        let lt = 1;
+        let rt = stable[stable.length - 1];
+        while (lt <= rt) {
+          let mid = parseInt((lt + rt) / 2);
+          if (count(stable, mid) < c) rt = mid - 1;
+          else {
+            lt = mid + 1;
+            answer = mid;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [1, 2, 8, 4, 9];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>

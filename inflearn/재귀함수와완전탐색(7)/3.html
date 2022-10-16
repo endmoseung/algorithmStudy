@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //이진순회 : 돌면서 두개중에 하나의 값으로 깊게 가면서 탐색하는 방법
+      //전위순회 : 부모 왼쪽 오른쪽 순서로 탐색
+      //중위순회 : 왼쪽 부모 오른쪽 순서로 탐색
+      //후위순회 : 왼쪽 오른쪽 부모 순서로 탐색
+      function solution(n) {
+        let answer = "";
+        function DFS(v) {
+          if (v > 7) return;
+          else {
+            answer += v + " ";
+            DFS(v * 2);
+            DFS(v * 2 + 1);
+            console.log(v);
+          }
+        }
+        DFS(n);
+        return answer;
+      }
+
+      console.log(solution(1));
+    </script>
+  </body>
+</html>

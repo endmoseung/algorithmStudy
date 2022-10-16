@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //가로와 세로에서 최소한의 값으로 명함을 작성하는 경우의 수를 구해라 (완전탐색)
+      //조금 틀렸던 풀이
+      function solution(sizes) {
+        let width = 0; //80
+        let horizon = 0; //70
+        for (i = 0; i < sizes.length; i++) {
+          if (sizes[i][0] > width) width = sizes[i][0];
+          if (sizes[i][1] > horizon) horizon = sizes[i][1];
+        }
+        // 더 작은값을 비교해서 더 줄일수 있는지 확인해보기
+        let index = width < horizon ? 0 : 1;
+        let best = width < horizon ? width : horizon;
+        for (i = 0; i < sizes.length; i++) {
+          let compare = sizes[i][index];
+          let properBool = false;
+          for (j = 0; j < sizes.length; j++) {
+            if (compare < sizes[j][0] && compare < sizes[j][1]) break;
+            if (j === sizes.length - 1) {
+              properBool = true;
+            }
+          }
+          if (properBool && compare < best) best = compare;
+        }
+        return width < horizon ? best * horizon : width * best;
+      }
+      //맞춘풀이
+      function solution(sizes) {
+        //가로랑 세로중에서 가장큰값을 모은 배열, 작은값을 모은 배열중에서 가장큰값끼리 곱
+        //왜냐면 결국 더 큰값으로 직사각형을 눕히면 결국 가로세로는 의미없기떄문
+        let width = [];
+        let height = [];
+        for (i = 0; i < sizes.length; i++) {
+          width.push(Math.max(...sizes[i]));
+          height.push(Math.min(...sizes[i]));
+        }
+
+        return Math.max(...width) * Math.max(...height);
+      }
+    </script>
+  </body>
+</html>
