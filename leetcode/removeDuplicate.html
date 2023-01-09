@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var removeDuplicates = function(nums) {
+      //     let test = {};
+      //     let count = 0;
+      //     let newNums = [];
+      //     for(let i =0;i<nums.length;i++){
+      //         if(test[nums[i]]&&test[nums[i]]<2){
+      //             test[nums[i]]+=1;
+      //             count++;
+      //             newNums.push(nums[i])
+      //         }else if(test[nums[i]]===undefined){
+      //             test[nums[i]]=1;
+      //             count++;
+      //             newNums.push(nums[i])
+      //         }else{
+      //             nums.splice(i,1)
+      //         }
+      //     }
+      //     for(let j = 0;j<nums.length-count;j++){
+      //         newNums.push("_")
+      //     }
+      //     nums=newNums
+      //     return count;
+      // };
+      var removeDuplicates = function (nums) {
+        for (let i = nums.length - 1; i >= 0; i--) {
+          let secPrev = nums[i - 2];
+          if (secPrev === nums[i]) nums.splice(i, 1);
+        }
+      };
+    </script>
+  </body>
+</html>

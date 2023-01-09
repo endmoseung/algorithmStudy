@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var longestWord = function (words) {
+        const sortedWords = words.sort();
+        let output = sortedWords[0];
+        for (let i = 0; i < sortedWords.length; i++) {
+          if (
+            i === sortedWords.length - 1 &&
+            sortedWords[i].length !== sortedWords[i - 1].length
+          ) {
+            output === sortedWords[i];
+            break;
+          }
+          if (
+            sortedWords[i][0] === sortedWords[i + 1][0] &&
+            sortedWords[i].length !== sortedWords[i + 1].length
+          ) {
+            output = sortedWords[i + 1];
+            continue;
+          }
+          break;
+        }
+        return output;
+      };
+      console.log(
+        longestWord(["a", "banana", "app", "appl", "ap", "apply", "apple"])
+      );
+    </script>
+  </body>
+</html>
