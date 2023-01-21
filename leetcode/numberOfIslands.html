@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const numIslands = function (grid) {
+        let count = 0;
+
+        function callDFS(grid, i, j) {
+          if (
+            i < 0 ||
+            i >= grid.length ||
+            j < 0 ||
+            j >= grid[i].length ||
+            grid[i][j] == "0"
+          ) {
+            return;
+          }
+
+          grid[i][j] = "0";
+
+          callDFS(grid, i + 1, j); // down
+          callDFS(grid, i - 1, j); // up
+          callDFS(grid, i, j + 1); // right
+          callDFS(grid, i, j - 1); // left
+        }
+
+        for (let i = 0; i < grid.length; i++) {
+          for (let j = 0; j < grid[i].length; j++) {
+            if (grid[i][j] == "1") {
+              count += 1;
+              callDFS(grid, i, j);
+            }
+          }
+        }
+
+        return count;
+      };
+    </script>
+  </body>
+</html>

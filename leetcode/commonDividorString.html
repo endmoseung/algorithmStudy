@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const gcdOfStrings = function (str1, str2) {
+        const lessString = str1.length > str2.length ? str2 : str1;
+        const bigString = str1.length > str2.length ? str1 : str2;
+        let largestDivideString = "";
+        for (let i = 1; i <= lessString.length; i++) {
+          const word = lessString.substr(0, i);
+          const splittedWord = bigString.split(word);
+          if (
+            splittedWord.every((v) => v === "") &&
+            lessString.split(word).every((v) => v === "")
+          ) {
+            largestDivideString = word;
+          }
+        }
+        return largestDivideString;
+      };
+    </script>
+  </body>
+</html>

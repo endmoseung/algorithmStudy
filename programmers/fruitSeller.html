@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(k, m, score) {
+        var answer = 0;
+        let sortedFilteredScore = score
+          .filter((value) => value <= k)
+          .sort((a, b) => b - a);
+        while (sortedFilteredScore.length > m) {
+          for (let i = sortedFilteredScore.length - 1; i < m; i--) {
+            answer += sortedFilteredScore[i];
+            sortedFilteredScore.pop();
+          }
+        }
+        return answer;
+      }
+      console.log(solution(3, 4, [1, 2, 3, 1, 2, 3, 1]));
+    </script>
+  </body>
+</html>
