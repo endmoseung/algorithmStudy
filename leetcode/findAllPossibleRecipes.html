@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var findAllRecipes = function (recipes, ingredients, supplies) {
+        const output = [];
+        const findCanMakeRecipe = (ingredient) => {
+          console.log(ingredient);
+          let correctedIngredients = 0;
+          for (let j = 0; j < ingredient.length; j++) {
+            if (
+              supplies.includes(ingredient[j]) ||
+              output.includes(ingredient[j])
+            )
+              correctedIngredients += 1;
+            if (correctedIngredients === ingredient.length)
+              output.push(ingredient);
+          }
+          return correctedIngredients === ingredient.length ? true : false;
+        };
+
+        for (let i = 0; i < recipes.length; i++) {
+          let correctedIngredients = 0;
+          if (output.includes(ingredients[i])) continue;
+          for (let j = 0; j < ingredients[i].length; j++) {
+            if (
+              supplies.includes(ingredients[i][j]) ||
+              output.includes(ingredients[i][j]) // set으로해서 찾으면 복잡도가 훨씬 빠를듯
+            )
+              correctedIngredients += 1;
+            if (recipes.indexOf(ingredients[i][j])) {
+              if (
+                findCanMakeRecipe(recipes[recipes.indexOf(ingredients[i][j])])
+              )
+                correctedIngredients += 1;
+              continue;
+            }
+            if (correctedIngredients === ingredients[i].length)
+              output.push(recipes[i]);
+          }
+        }
+        return output;
+      };
+      console.log(
+        findAllRecipes(
+          ["bread", "sandwich"],
+          [
+            ["yeast", "flour"],
+            ["bread", "meat"],
+          ],
+          ["yeast", "flour", "meat"]
+        )
+      );
+      const a = [1, 2, 3, 4, 5];
+      console.log(a.indexOf(3));
+    </script>
+  </body>
+</html>
