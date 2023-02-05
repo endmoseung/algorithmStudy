@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var countPalindromicSubsequence = function (s) {
+        let palindromicMap = new Map();
+        let answer = 0;
+
+        const checkPalindromic = (word) => {
+          if (word[0] === word[2]) {
+            return true;
+          }
+          return false;
+        };
+
+        const checkDuplicate = (word) => {
+          if (palindromicMap.has(word)) {
+            return false;
+          }
+          palindromicMap.set(word);
+          return true;
+        };
+
+        for (let i = 0; i < s.length - 2; i++) {
+          for (let j = i + 1; j < s.length - 1; j++) {
+            for (let k = j + 1; k < s.length; k++) {
+              const word = `${s[i]}${s[j]}${s[k]}`;
+              if (checkPalindromic(word) && checkDuplicate(word)) answer += 1;
+            }
+          }
+        }
+        return answer;
+      };
+    </script>
+  </body>
+</html>
