@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var distinctNames = function (ideas) {
+      //   let output = 0;
+      //   console.log(suf);
+      //   for (let m = 0; m < ideas.length; m++) {
+      //     ideasMap.set(ideas[m]);
+      //   }
+      //   for (let i = 0; i < ideas.length; i++) {
+      //     for (let j = 0; j < ideas.length; j++) {
+      //       if (i === j) continue;
+      //       const first = `${ideas[i].substring(0, 1)}${ideas[j].substring(1)}`;
+      //       const second = `${ideas[j].substring(0, 1)}${ideas[i].substring(
+      //         1
+      //       )}`;
+      //       console.log(first, second);
+      //       if (ideasMap.has(first)) continue;
+      //       if (ideasMap.has(second)) continue;
+      //       output += 1;
+      //     }
+      //   }
+      //   return output;
+      // };
+      var distinctNames = function (ideas) {
+        let output = 0;
+        const ideasMap = new Map();
+        const suf = Array.from({ length: 26 }, () => new Set());
+        for (const A of ideas) suf[A.charCodeAt(0) - 97].add(A.slice(1));
+        console.log(suf);
+        for (i = 0; i < 26; i++) {
+          if (suf[i].size === 0) continue;
+          for (let j = i + 1; j < 26; j++) {
+            let count = 0;
+            for (let x of suf[i]) {
+              if (suf[j].has(x)) {
+                count += 1;
+              }
+            }
+            if (suf[j].size === 0) continue;
+            output += (suf[j].size - count) * (suf[i].size - count);
+          }
+        }
+        return output * 2;
+      };
+      console.log(
+        distinctNames(["coma", "coffee", "donuts", "time", "toffee"])
+      );
+    </script>
+  </body>
+</html>

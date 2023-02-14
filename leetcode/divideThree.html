@@ -16,13 +16,13 @@
         // dp[2] = %3 === 2
         let dp = new Array(3).fill(0);
         for (let num of nums) {
-          for (let i of dp.slice(0)) {
-            console.log(dp.slice(0));
+          for (let i of dp) {
+            console.log(dp);
             let sum = i + num;
             let mod = sum % 3;
+
             // on each pass, set the value of dp[mod] to the Math.max val
             dp[mod] = Math.max(dp[mod], sum);
-            console.log(dp);
           }
         }
         return dp[0];

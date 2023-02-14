@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var jump = function (nums) {
+      //   if (nums.length <= nums[0] - 1) return 1;
+      //   let jumpCount = 0;
+      //   let currentIndex = 0;
+      //   let count = 0;
+      //   while (count < nums.length) {
+      //     if (currentIndex + nums[currentIndex] >= nums.length - 1) {
+      //       jumpCount += 1;
+      //       break;
+      //     }
+      //     count = count + 1;
+      //     let index = 0;
+      //     let max = 0;
+      //     for (
+      //       let i = currentIndex;
+      //       i <= currentIndex + nums[currentIndex];
+      //       i++
+      //     ) {
+      //       if (nums[i] >= max) {
+      //         max = nums[i];
+      //         index = i - currentIndex;
+      //       }
+      //     }
+      //     console.log(index, currentIndex, jumpCount);
+      //     jumpCount += 1;
+      //     currentIndex += index === 0 ? max : index;
+      //   }
+      //   return jumpCount;
+      // };
+      var jump = function (nums) {
+        var output = 0;
+        var jump = 0;
+        var far = 0;
+        for (i = 0; i < nums.length - 1; i++) {
+          jump = Math.max(jump, nums[i] + i);
+          if (i == far) {
+            far = jump;
+            output++;
+          }
+        }
+        return output;
+      };
+      console.log(jump([1, 2, 1, 1, 1]));
+    </script>
+  </body>
+</html>
