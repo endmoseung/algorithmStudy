@@ -8,35 +8,35 @@
   </head>
   <body>
     <script>
-      // var jump = function (nums) {
-      //   if (nums.length <= nums[0] - 1) return 1;
-      //   let jumpCount = 0;
-      //   let currentIndex = 0;
-      //   let count = 0;
-      //   while (count < nums.length) {
-      //     if (currentIndex + nums[currentIndex] >= nums.length - 1) {
-      //       jumpCount += 1;
-      //       break;
-      //     }
-      //     count = count + 1;
-      //     let index = 0;
-      //     let max = 0;
-      //     for (
-      //       let i = currentIndex;
-      //       i <= currentIndex + nums[currentIndex];
-      //       i++
-      //     ) {
-      //       if (nums[i] >= max) {
-      //         max = nums[i];
-      //         index = i - currentIndex;
-      //       }
-      //     }
-      //     console.log(index, currentIndex, jumpCount);
-      //     jumpCount += 1;
-      //     currentIndex += index === 0 ? max : index;
-      //   }
-      //   return jumpCount;
-      // };
+      var jump = function (nums) {
+        if (nums.length <= nums[0] - 1) return 1;
+        let jumpCount = 0;
+        let currentIndex = 0;
+        let count = 0;
+        while (count < nums.length) {
+          if (currentIndex + nums[currentIndex] >= nums.length - 1) {
+            jumpCount += 1;
+            break;
+          }
+          count = count + 1;
+          let index = 0;
+          let max = 0;
+          for (
+            let i = currentIndex;
+            i <= currentIndex + nums[currentIndex];
+            i++
+          ) {
+            if (nums[i] >= max) {
+              max = nums[i];
+              index = i - currentIndex;
+            }
+          }
+          console.log(index, currentIndex, jumpCount);
+          jumpCount += 1;
+          currentIndex += index === 0 ? max : index;
+        }
+        return jumpCount;
+      };
       var jump = function (nums) {
         var output = 0;
         var jump = 0;
